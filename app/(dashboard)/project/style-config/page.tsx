@@ -67,7 +67,7 @@ export default function Page() {
   }, [selectedProject]);
 
   const handleChange: ChangeEventHandler<HTMLInputElement | HTMLSelectElement> = (e) => {
-    const { name, value, files } = e.target;
+    const { name, value, files } = e.target as any;
     if (files) {
       setFormData({ ...formData, [name]: files[0] });
     } else {
