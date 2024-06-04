@@ -78,7 +78,7 @@ const NavbarSelectProject = () => {
     setSelectedProjectId(projectId);
     setSelectedProjectName(projectName);
     Cookies.set("project", projectId);
-    setShowModal(false);
+    handleClose();
     router.refresh();
   };
 
