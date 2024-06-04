@@ -56,18 +56,21 @@ const NavbarSelectProject = () => {
   }, []);
 
   const handleShow = () => {
-    fetchProjects();
-    const modal = document.getElementById("my_modal_2") as HTMLDialogElement;
-    if (modal) {
-      modal.showModal();
+    if (modalRef.current) {
+      modalRef.current.showModal();
     }
-    setShowModal(true);
   };
 
-  const handleClose = () => setShowModal(false);
+  const handleClose = () => {
+    if (modalRef.current) {
+      modalRef.current.close();
+    }
+  };
 
   const handleNewProject = () => {
-    setShowModal(false);
+    if (modalRef.current) {
+      modalRef.current.close();
+    }
     router.push("/project/create");
   };
 
@@ -94,74 +97,85 @@ const NavbarSelectProject = () => {
         </svg>
       </button>
 
-      {showModal && (
-        <dialog id="my_modal_2" className="modal open">
-          <div className="modal-box hide-scrollbar">
-            <h3 className="font-bold text-lg mb-2">Select Project</h3>
-            <div>
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>Project Name</th>
-                    <th>Project ID</th>
-                    <th></th>
+      <dialog id="my_modal_2" className="modal open" ref={modalRef}>
+        <div
+          className="modal-box hide-scrollbar"
+          style={{ maxHeight: "500px" }}
+        >
+          <h3 className="font-bold text-lg mb-2">Select Project</h3>
+          <div
+            style={{ height: "300px", overflowY: "auto" }}
+            className="hide-scrollbar"
+          >
+            <table className="table">
+              <thead>
+                <tr
+                  style={{
+                    position: "sticky",
+                    top: 0,
+                    zIndex: 1,
+                    background: "white",
+                  }}
+                >
+                  <th></th>
+                  <th>Project Name</th>
+                  <th>Project ID</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {projects.map((project: any, index) => (
+                  <tr
+                    key={index}
+                    className="cursor-pointer hover:bg-base-200"
+                    onClick={() =>
+                      handleProjectSelect(project.name, project.id)
+                    }
+                  >
+                    <th>{index + 1}</th>
+                    <td>{project.name}</td>
+                    <td>{project.id}</td>
+                    <th>
+                      {selectedProjectId === project.id && (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          className="inline-block w-6 h-6 stroke-current"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      )}
+                    </th>
                   </tr>
-                </thead>
-                <tbody >
-                  {projects.map((project: any, index) => (
-                    <tr
-                      key={index}
-                      className="cursor-pointer hover:bg-base-200"
-                      onClick={() =>
-                        handleProjectSelect(project.name, project.id)
-                      }
-                    >
-                      <th>{index + 1}</th>
-                      <td>{project.name}</td>
-                      <td>{project.id}</td>
-                      <th>
-                        {selectedProjectId === project.id && (
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            className="inline-block w-6 h-6 stroke-current"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                        )}
-                      </th>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="modal-action">
-            <Button
-            type="button"
-            title="Cancel"
-            variant="btn_dark_green"
-            onclick={handleClose}
-            full
-          />
-          <Button
-            type="button"
-            title="New Project"
-            variant="btn_orange"
-            onclick={handleNewProject}
-            full
-          />
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </dialog>
-      )}
+
+          <div className="modal-action">
+            <Button
+              type="button"
+              title="Cancel"
+              variant="btn_dark_green"
+              onclick={handleClose}
+              full
+            />
+            <Button
+              type="button"
+              title="New Project"
+              variant="btn_orange"
+              onclick={handleNewProject}
+              full
+            />
+          </div>
+        </div>
+      </dialog>
     </>
   );
 };
