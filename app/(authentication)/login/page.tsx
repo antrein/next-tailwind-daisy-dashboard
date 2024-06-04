@@ -11,6 +11,9 @@ export default function Page() {
         <h2 className="text-2xl font-semibold text-white text-center">Login</h2>
         <p className="mt-2 text-center text-gray-400">Access your account</p>
         <LoginForm />
+        <p className="mt-2 text-center text-white">
+          Don't have an account? <a href="/register" className="link link-info">Sign up</a>
+        </p>
       </div>
     </div>
   );
