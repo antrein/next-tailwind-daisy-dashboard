@@ -4,7 +4,7 @@ import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
   title: "Antrein - Dashboard",
-  description: "Dashboard for Antrein",
+  description: "Antrein offers an advanced virtual waiting room service designed to manage high traffic volumes efficiently. Ensure a smooth and fair customer experience with real-time queue management and detailed analytics.",
 };
 
 export default function RootLayout({
