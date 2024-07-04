@@ -14,10 +14,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
       <div className="drawer-content h-screen flex flex-col">
         <Navbar />
         <div className="flex-1 flex flex-col items-center justify-space-evenly bg-base-200">
-          <div className="">
           {children}
-
-          </div>
         </div>
       </div>
       <div className="drawer-side border-r">
