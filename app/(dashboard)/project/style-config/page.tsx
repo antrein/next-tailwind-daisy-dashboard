@@ -28,7 +28,7 @@ export default function Page() {
         const { token } = authParsed;
 
         const response = await fetch(
-          `https://api.antrein5.cloud/bc/dashboard/project/detail/${selectedProject}`,
+          `https://api.antrein.com/bc/dashboard/project/detail/${selectedProject}`,
           {
             method: "GET",
             headers: {
@@ -104,7 +104,7 @@ export default function Page() {
       }
 
       const response = await fetch(
-        `https://api.antrein5.cloud/bc/dashboard/project/style`,
+        `https://api.antrein.com/bc/dashboard/project/style`,
         {
           method: "PUT",
           headers: {

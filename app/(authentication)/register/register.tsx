@@ -54,7 +54,7 @@ export default function Register() {
 
     try {
       const res = await axios.post(
-        "https://api.antrein5.cloud/bc/dashboard/auth/register",
+        "https://api.antrein.com/bc/dashboard/auth/register",
         formData
       );
       if (res.status === 201) {

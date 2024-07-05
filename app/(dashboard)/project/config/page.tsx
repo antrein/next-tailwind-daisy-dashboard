@@ -30,7 +30,7 @@ export default function Page() {
       const { token } = authParsed;
 
       const response = await fetch(
-        `https://api.antrein5.cloud/bc/dashboard/project/health/${selectedProject}`,
+        `https://api.antrein.com/bc/dashboard/project/health/${selectedProject}`,
         {
           method: "GET",
           headers: {
@@ -69,7 +69,7 @@ export default function Page() {
         const { token } = authParsed;
 
         const response = await fetch(
-          `https://api.antrein5.cloud/bc/dashboard/project/detail/${selectedProject}`,
+          `https://api.antrein.com/bc/dashboard/project/detail/${selectedProject}`,
           {
             method: "GET",
             headers: {
@@ -142,7 +142,7 @@ export default function Page() {
       const { token } = authParsed;
 
       const response = await fetch(
-        `https://api.antrein5.cloud/bc/dashboard/project/config`,
+        `https://api.antrein.com/bc/dashboard/project/config`,
         {
           method: "PUT",
           headers: {

@@ -32,7 +32,7 @@ export default function Home() {
   useEffect(() => {
     if (selectedProject) {
       const sse = new EventSource(
-        `https://api.antrein5.cloud/bc/dashboard/analytic?project_id=${selectedProject}`
+        `https://api.antrein.com/bc/dashboard/analytic?project_id=${selectedProject}`
       );
 
       sse.onmessage = (event) => {

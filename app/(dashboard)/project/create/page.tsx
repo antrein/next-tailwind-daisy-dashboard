@@ -28,7 +28,7 @@ export default function Page() {
       const authParsed = JSON.parse(auth);
       const { token } = authParsed;
       const response = await fetch(
-        "https://api.antrein5.cloud/bc/dashboard/project",
+        "https://api.antrein.com/bc/dashboard/project",
         {
           method: "POST",
           headers: {

@@ -24,7 +24,7 @@ const NavbarSelectProject = () => {
       const authParsed = JSON.parse(auth);
       const { token } = authParsed;
       const response = await fetch(
-        "https://api.antrein5.cloud/bc/dashboard/project/list",
+        "https://api.antrein.com/bc/dashboard/project/list",
         {
           method: "GET",
           headers: {
