@@ -22,13 +22,17 @@ export default function Home() {
   const selectedProject = Cookies.get("project");
 
   const [messages, setMessages] = useState<EventData[]>([]);
-  const [userInQueueChartData, setUserInQueueChartData] = useState<ChartData[]>([]);
-  const [userInRoomChartData, setUserInRoomChartData] = useState<ChartData[]>([]);
+  const [userInQueueChartData, setUserInQueueChartData] = useState<ChartData[]>(
+    []
+  );
+  const [userInRoomChartData, setUserInRoomChartData] = useState<ChartData[]>(
+    []
+  );
 
   useEffect(() => {
     if (selectedProject) {
       const sse = new EventSource(
-        `https://api.antrein.com/bc/dashboard/analytic?project_id=${selectedProject}`
+        `https://api.antrein5.cloud/bc/dashboard/analytic?project_id=${selectedProject}`
       );
 
       sse.onmessage = (event) => {

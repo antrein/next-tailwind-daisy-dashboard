@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://api.antrein.com/bc/dashboard/auth",
+  baseURL: "https://api.antrein5.cloud/bc/dashboard/auth",
 });
 
 export const login = async (email: string, password: string) => {

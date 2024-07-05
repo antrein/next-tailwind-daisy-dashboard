@@ -1,14 +1,14 @@
-'use client';
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Cookies from 'js-cookie';
-import toast, { Toaster } from 'react-hot-toast';
-import Button from '@/components/Button';
+"use client";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
+import toast, { Toaster } from "react-hot-toast";
+import Button from "@/components/Button";
 
 export default function Page() {
   const [formData, setFormData] = useState({
-    id: '',
-    name: '',
+    id: "",
+    name: "",
   });
 
   const router = useRouter();
@@ -21,18 +21,18 @@ export default function Page() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const auth = Cookies.get('auth');
+      const auth = Cookies.get("auth");
       if (!auth) {
         return;
       }
       const authParsed = JSON.parse(auth);
       const { token } = authParsed;
       const response = await fetch(
-        'https://api.antrein.com/bc/dashboard/project',
+        "https://api.antrein5.cloud/bc/dashboard/project",
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(formData),
@@ -42,8 +42,8 @@ export default function Page() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success('Project created successfully');
-        router.push('/project/config');
+        toast.success("Project created successfully");
+        router.push("/project/config");
       } else {
         toast.error((data as any)?.error);
       }
@@ -60,7 +60,10 @@ export default function Page() {
       <div className="flex justify-center mt-6">
         <div className="w-full max-w-5xl">
           <h1 className="text-3xl font-bold mb-5">Create Project</h1>
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          >
             <div className="mb-4">
               <label className="form-control w-full">
                 <div className="label">
@@ -92,7 +95,12 @@ export default function Page() {
               </label>
             </div>
             <div className="col-span-1 md:col-span-2 flex justify-end">
-              <Button type="submit" title="Create Project" variant="btn_orange" full />
+              <Button
+                type="submit"
+                title="Create Project"
+                variant="btn_orange"
+                full
+              />
             </div>
           </form>
         </div>

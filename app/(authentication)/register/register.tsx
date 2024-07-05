@@ -54,7 +54,7 @@ export default function Register() {
 
     try {
       const res = await axios.post(
-        "https://api.antrein.com/bc/dashboard/auth/register",
+        "https://api.antrein5.cloud/bc/dashboard/auth/register",
         formData
       );
       if (res.status === 201) {
@@ -243,7 +243,6 @@ export default function Register() {
           {retypePasswordTouched && !passwordMatch && (
             <p className="text-red-600 text-sm mt-1">Passwords do not match</p>
           )}
-          
         </div>
 
         <div className="w-full mb-4">

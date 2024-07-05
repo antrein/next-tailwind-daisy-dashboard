@@ -28,7 +28,7 @@ export default function Page() {
         const { token } = authParsed;
 
         const response = await fetch(
-          `https://api.antrein.com/bc/dashboard/project/detail/${selectedProject}`,
+          `https://api.antrein5.cloud/bc/dashboard/project/detail/${selectedProject}`,
           {
             method: "GET",
             headers: {
@@ -66,7 +66,9 @@ export default function Page() {
     }
   }, [selectedProject]);
 
-  const handleChange: ChangeEventHandler<HTMLInputElement | HTMLSelectElement> = (e) => {
+  const handleChange: ChangeEventHandler<
+    HTMLInputElement | HTMLSelectElement
+  > = (e) => {
     const { name, value, files } = e.target as any;
     if (files) {
       setFormData({ ...formData, [name]: files[0] });
@@ -94,12 +96,15 @@ export default function Page() {
         formDataToSend.append("file", formData.file);
       } else {
         formDataToSend.append("queue_page_style", formData.queue_page_style);
-        formDataToSend.append("queue_page_base_color", formData.queue_page_base_color);
+        formDataToSend.append(
+          "queue_page_base_color",
+          formData.queue_page_base_color
+        );
         formDataToSend.append("queue_page_title", formData.queue_page_title);
       }
 
       const response = await fetch(
-        `https://api.antrein.com/bc/dashboard/project/style`,
+        `https://api.antrein5.cloud/bc/dashboard/project/style`,
         {
           method: "PUT",
           headers: {
@@ -124,8 +129,13 @@ export default function Page() {
     <>
       <div className="flex justify-center mt-6">
         <div className="w-full max-w-5xl">
-          <h1 className="text-3xl font-bold mb-5">Project Style Configuration</h1>
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <h1 className="text-3xl font-bold mb-5">
+            Project Style Configuration
+          </h1>
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          >
             <div className="mb-4">
               <label className="form-control w-full">
                 <div className="label">

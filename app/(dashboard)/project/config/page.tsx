@@ -30,7 +30,7 @@ export default function Page() {
       const { token } = authParsed;
 
       const response = await fetch(
-        `https://api.antrein.com/bc/dashboard/project/health/${selectedProject}`,
+        `https://api.antrein5.cloud/bc/dashboard/project/health/${selectedProject}`,
         {
           method: "GET",
           headers: {
@@ -69,7 +69,7 @@ export default function Page() {
         const { token } = authParsed;
 
         const response = await fetch(
-          `https://api.antrein.com/bc/dashboard/project/detail/${selectedProject}`,
+          `https://api.antrein5.cloud/bc/dashboard/project/detail/${selectedProject}`,
           {
             method: "GET",
             headers: {
@@ -142,7 +142,7 @@ export default function Page() {
       const { token } = authParsed;
 
       const response = await fetch(
-        `https://api.antrein.com/bc/dashboard/project/config`,
+        `https://api.antrein5.cloud/bc/dashboard/project/config`,
         {
           method: "PUT",
           headers: {
@@ -186,7 +186,10 @@ export default function Page() {
               ></span>
             </div>
           </div>
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-1 md:grid-cols-3 gap-4"
+          >
             <div className="mb-4">
               <label className="form-control w-full">
                 <div className="label">
