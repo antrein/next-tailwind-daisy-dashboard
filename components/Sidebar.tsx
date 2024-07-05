@@ -31,6 +31,11 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
         <ul className="menu p-4 w-80  min-h-full lg:min-h-0 bg-white text-base-content">
           {/* Sidebar content here */}
           <li>
+            <a href="/">
+              Analytics
+            </a>
+          </li>
+          <li>
             <details open>
               <summary>Projects</summary>
               <ul>
@@ -42,12 +47,6 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                 </li>
               </ul>
             </details>
-          </li>
-          <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
           </li>
         </ul>
       </div>

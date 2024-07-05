@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { UsersInQueueChart } from "@/components/charts/UsersInQueueChart";
+import { UsersInRoomChart } from "@/components/charts/UsersInRoomChart";
 
 interface EventData {
   project_id: string;
@@ -21,7 +22,8 @@ export default function Home() {
   const selectedProject = Cookies.get("project");
 
   const [messages, setMessages] = useState<EventData[]>([]);
-  const [chartData, setChartData] = useState<ChartData[]>([]);
+  const [userInQueueChartData, setUserInQueueChartData] = useState<ChartData[]>([]);
+  const [userInRoomChartData, setUserInRoomChartData] = useState<ChartData[]>([]);
 
   useEffect(() => {
     if (selectedProject) {
@@ -33,13 +35,25 @@ export default function Home() {
         const data: EventData = JSON.parse(event.data);
         setMessages((prevMessages) => [...prevMessages, data]);
 
-        const newChartData = {
+        const newUserInQueueChartData = {
           time: new Date(data.timestamp).toLocaleTimeString(),
           value: data.total_users_in_queue,
         };
 
-        setChartData((prevChartData) => {
-          const updatedChartData = [...prevChartData, newChartData];
+        const newUserInRoomChartData = {
+          time: new Date(data.timestamp).toLocaleTimeString(),
+          value: data.total_users_in_room,
+        };
+
+        setUserInQueueChartData((prevChartData) => {
+          const updatedChartData = [...prevChartData, newUserInQueueChartData];
+          return updatedChartData.length > 10
+            ? updatedChartData.slice(updatedChartData.length - 10)
+            : updatedChartData;
+        });
+
+        setUserInRoomChartData((prevChartData) => {
+          const updatedChartData = [...prevChartData, newUserInRoomChartData];
           return updatedChartData.length > 10
             ? updatedChartData.slice(updatedChartData.length - 10)
             : updatedChartData;
@@ -58,7 +72,7 @@ export default function Home() {
   }, [selectedProject]);
 
   return (
-    <div className="flex w-full px-8">
+    <div className="flex flex-col w-full px-8">
       {/* <h1>Analytics</h1>
       <ul>
         {messages.map((message, index) => (
@@ -70,7 +84,8 @@ export default function Home() {
           </li>
         ))}
       </ul> */}
-      <UsersInQueueChart data={chartData} />
+      <UsersInQueueChart data={userInQueueChartData} />
+      <UsersInRoomChart data={userInRoomChartData} />
     </div>
   );
 }
