@@ -5,6 +5,8 @@ import Cookies from "js-cookie";
 import { UsersInQueueChart } from "@/components/charts/UsersInQueueChart";
 import { UsersInRoomChart } from "@/components/charts/UsersInRoomChart";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 interface EventData {
   project_id: string;
   timestamp: string;
@@ -32,7 +34,7 @@ export default function Home() {
   useEffect(() => {
     if (selectedProject) {
       const sse = new EventSource(
-        `https://api.antrein.com/bc/dashboard/analytic?project_id=${selectedProject}`
+        `https://api.${baseUrl}/bc/dashboard/analytic?project_id=${selectedProject}`
       );
 
       sse.onmessage = (event) => {

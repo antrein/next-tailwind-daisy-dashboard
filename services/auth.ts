@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 const api = axios.create({
-  baseURL: "https://api.antrein.com/bc/dashboard/auth",
+  baseURL: `https://api.${baseUrl}/bc/dashboard/auth`,
 });
 
 export const login = async (email: string, password: string) => {

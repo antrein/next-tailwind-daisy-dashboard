@@ -8,6 +8,8 @@ import toast, { Toaster } from "react-hot-toast";
 import Button from "@/components/Button";
 import Link from "next/link";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 export default function Login() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
@@ -34,7 +36,7 @@ export default function Login() {
 
     try {
       const res = await axios.post(
-        "https://api.antrein.com/bc/dashboard/auth/login",
+        `https://api.${baseUrl}/bc/dashboard/auth/login`,
         formData
       );
       if (res.status === 200) {

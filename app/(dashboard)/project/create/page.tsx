@@ -5,6 +5,8 @@ import Cookies from "js-cookie";
 import toast, { Toaster } from "react-hot-toast";
 import Button from "@/components/Button";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 export default function Page() {
   const [formData, setFormData] = useState({
     id: "",
@@ -28,7 +30,7 @@ export default function Page() {
       const authParsed = JSON.parse(auth);
       const { token } = authParsed;
       const response = await fetch(
-        "https://api.antrein.com/bc/dashboard/project",
+        `https://api.${baseUrl}/bc/dashboard/project`,
         {
           method: "POST",
           headers: {

@@ -5,6 +5,8 @@ import Cookies from "js-cookie";
 import toast, { Toaster } from "react-hot-toast";
 import Button from "@/components/Button";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 export default function Page() {
   const selectedProject = Cookies.get("project");
   const [formData, setFormData] = useState({
@@ -28,7 +30,7 @@ export default function Page() {
         const { token } = authParsed;
 
         const response = await fetch(
-          `https://api.antrein.com/bc/dashboard/project/detail/${selectedProject}`,
+          `https://api.${baseUrl}/bc/dashboard/project/detail/${selectedProject}`,
           {
             method: "GET",
             headers: {
@@ -104,7 +106,7 @@ export default function Page() {
       }
 
       const response = await fetch(
-        `https://api.antrein.com/bc/dashboard/project/style`,
+        `https://api.${baseUrl}/bc/dashboard/project/style`,
         {
           method: "PUT",
           headers: {

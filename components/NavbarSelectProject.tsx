@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import Button from "./Button";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 const NavbarSelectProject = () => {
   const [showModal, setShowModal] = useState(false);
   const [projects, setProjects] = useState([]);
@@ -24,7 +26,7 @@ const NavbarSelectProject = () => {
       const authParsed = JSON.parse(auth);
       const { token } = authParsed;
       const response = await fetch(
-        "https://api.antrein.com/bc/dashboard/project/list",
+        `https://api.${baseUrl}/bc/dashboard/project/list`,
         {
           method: "GET",
           headers: {

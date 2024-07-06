@@ -7,6 +7,8 @@ import toast, { Toaster } from "react-hot-toast";
 import Button from "@/components/Button";
 import Link from "next/link";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 export default function Register() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
@@ -54,7 +56,7 @@ export default function Register() {
 
     try {
       const res = await axios.post(
-        "https://api.antrein.com/bc/dashboard/auth/register",
+        `https://api.${baseUrl}/bc/dashboard/auth/register`,
         formData
       );
       if (res.status === 201) {
