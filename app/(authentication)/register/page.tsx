@@ -12,7 +12,7 @@ export default function Page() {
         <p className="mt-2 text-center text-gray-400">Create your account</p>
         <RegisterForm />
         <p className="mt-2 text-center text-white">
-          Already have an account? <a href="/register" className="link link-info">Log in</a>
+          Already have an account? <a href="/login" className="link link-info">Log in</a>
         </p>
       </div>
     </div>
