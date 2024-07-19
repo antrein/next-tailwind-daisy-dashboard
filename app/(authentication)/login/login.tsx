@@ -125,10 +125,6 @@ export default function Login() {
               aria-label="Password"
               value={formData.password}
               onChange={handleChange}
-              onCopy={(e) => e.preventDefault()}
-              onDrag={(e) => e.preventDefault()}
-              onDrop={(e) => e.preventDefault()}
-              onPaste={(e) => e.preventDefault()}
               className="w-full"
             />
 
