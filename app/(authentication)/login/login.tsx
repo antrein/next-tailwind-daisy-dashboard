@@ -35,7 +35,7 @@ export default function Login() {
 
     try {
       const res = await axios.post(
-        `https://api.${baseUrl}/bc/dashboard/auth/login`,
+        `https://api.antrein.com/bc/dashboard/auth/login`,
         formData
       );
       if (res.status === 200) {
@@ -167,17 +167,6 @@ export default function Login() {
             full
           />
         </div>
-
-        {/* <div className="w-full">
-          <Link href="/register">
-            <Button
-              type="button"
-              title="Register"
-              variant="btn_dark_green"
-              full
-            />
-          </Link>
-        </div> */}
       </form>
       <Toaster />
     </>
