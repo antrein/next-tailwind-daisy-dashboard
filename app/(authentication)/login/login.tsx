@@ -6,7 +6,6 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import toast, { Toaster } from "react-hot-toast";
 import Button from "@/components/Button";
-import Link from "next/link";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
