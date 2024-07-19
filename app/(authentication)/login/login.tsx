@@ -35,7 +35,7 @@ export default function Login() {
 
     try {
       const res = await axios.post(
-        `https://api.antrein.com/bc/dashboard/auth/login`,
+        `https://api.${baseUrl}/bc/dashboard/auth/login`,
         formData
       );
       if (res.status === 200) {
