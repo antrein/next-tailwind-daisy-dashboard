@@ -6,7 +6,7 @@ import "../../globals.css";
 
 export default function Page() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white">
+    <div className="min-h-screen flex items-center justify-center bg-base-200">
       <div className="w-full max-w-md bg-green-90 shadow-md p-6">
         <h2 className="text-2xl font-semibold text-white text-center">Login</h2>
         <p className="mt-2 text-center text-gray-400">Access your account</p>
