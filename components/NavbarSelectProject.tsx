@@ -6,9 +6,14 @@ import Button from "./Button";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
+interface Project {
+  id: string;
+  name: string;
+}
+
 const NavbarSelectProject = () => {
   const [showModal, setShowModal] = useState(false);
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<Project[]>([]);
   const [selectedProjectName, setSelectedProjectName] =
     useState("Select Project");
   const [selectedProjectId, setSelectedProjectId] = useState(
@@ -42,7 +47,7 @@ const NavbarSelectProject = () => {
       setProjects(data.data.projects);
       if (selectedProjectId) {
         const selectedProject = data?.data?.projects?.find(
-          (p: any) => p.id === selectedProjectId
+          (p: Project) => p.id === selectedProjectId
         );
         if (selectedProject) {
           setSelectedProjectName(selectedProject.name);
@@ -54,12 +59,14 @@ const NavbarSelectProject = () => {
   };
 
   useEffect(() => {
-    // Fetch projects and update selected project name on component mount
-    fetchProjects();
+    fetchProjects(); // Fetch projects on component mount
+  }, []);
+
+  useEffect(() => {
     const projectId = Cookies.get("project");
     if (projectId) {
       const selectedProject = projects.find(
-        (project: any) => project.id === projectId
+        (project: Project) => project.id === projectId
       );
       if (selectedProject) {
         setSelectedProjectName(selectedProject.name);
@@ -137,7 +144,7 @@ const NavbarSelectProject = () => {
                 </tr>
               </thead>
               <tbody>
-                {projects.map((project: any, index) => (
+                {projects.map((project, index) => (
                   <tr
                     key={index}
                     className="cursor-pointer hover:bg-base-200"
