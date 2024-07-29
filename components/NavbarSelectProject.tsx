@@ -54,10 +54,21 @@ const NavbarSelectProject = () => {
   };
 
   useEffect(() => {
+    // Fetch projects and update selected project name on component mount
     fetchProjects();
-  }, []);
+    const projectId = Cookies.get("project");
+    if (projectId) {
+      const selectedProject = projects.find(
+        (project: any) => project.id === projectId
+      );
+      if (selectedProject) {
+        setSelectedProjectName(selectedProject.name);
+      }
+    }
+  }, [projects]);
 
   const handleShow = () => {
+    fetchProjects(); // Fetch projects every time the modal is shown
     if (modalRef.current) {
       modalRef.current.showModal();
     }

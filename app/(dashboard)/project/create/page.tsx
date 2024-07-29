@@ -44,6 +44,8 @@ export default function Page() {
       const data = await response.json();
 
       if (response.ok) {
+        const projectId = data?.data?.id;
+        Cookies.set("project", projectId);
         toast.success("Project created successfully");
         router.push("/project/config");
       } else {
